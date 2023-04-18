@@ -23,7 +23,6 @@ namespace DataStructure
         public int Capacity { get { return items.Length; } }
         public int Count { get { return size; } }
 
-        // indexer
         public T this[int index]
         {
             get
@@ -43,8 +42,7 @@ namespace DataStructure
                 items[index] = value;
             }
         }
-
-        // 아이템을 집어넣는 함수
+        
         public void Add(T item)
         {
             if(size < items.Length)
@@ -58,7 +56,6 @@ namespace DataStructure
             }
         }
 
-        // 아이템을 지우는 함수
         public bool Remove(T item)
         {
             int index = IndexOf(item);
@@ -71,7 +68,6 @@ namespace DataStructure
                 return false;
         }
 
-        // index 위치를 지우는 함수
         public void RemoveAt(int index)
         {
             if( index < 0 || index >= size)
@@ -79,22 +75,19 @@ namespace DataStructure
                 throw new IndexOutOfRangeException();
             }
 
-            size--; // 지웠으니 size 하나 감소
+            size--;
             Array.Copy(items, index + 1, items, index, size - index);
         }
 
-        // item의 인덱스 찾기 함수
         public int IndexOf(T item)
         {
-            // items에 item이 있는지 0에서 size만큼 찾기
             return Array.IndexOf(items, item, 0, size);
         }
 
-        // 못찾으면 Null
         public T? Find(Predicate<T> match)
         {
             if(match == null)
-                throw new ArgumentNullException("match"); // match가 Null
+                throw new ArgumentNullException("match");
         
             for(int i = 0; i < size; i++)
             {
@@ -102,7 +95,7 @@ namespace DataStructure
                     return items[i];
             }
 
-            return default(T);  // 기본값을 반환해줌
+            return default(T); 
         }
 
         public int FindIndex(Predicate<T> match)
@@ -114,12 +107,11 @@ namespace DataStructure
             return -1;
         }
 
-        // 리스트의 길이를 넘었을 경우 길이를 늘리는 함수
         public void Grow()
         {
             int newCapacity = items.Length * 2;
             T[] newItems = new T[newCapacity];
-            Array.Copy(items, 0, newItems, 0, size); // item의 내용을 newItems로 복사
+            Array.Copy(items, 0, newItems, 0, size); 
             items = newItems;
         }
     }

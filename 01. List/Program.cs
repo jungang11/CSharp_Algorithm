@@ -1,4 +1,6 @@
-﻿namespace _01._List
+﻿using _01._List;
+
+namespace _01._List
 {
     internal class Program
     {
@@ -84,7 +86,42 @@
 
         static void Main(string[] args)
         {
+            ListEx<string> animals = new ListEx<string>();
+
+            animals.Add("Tiger");
+            animals.Add("Elephant");
+            animals.Add("Dog");
+            animals.Add("Bird");
+            animals.Add("Cat");
+            animals.Add("Turtle");
+
+            Console.WriteLine("animals Count : {0}",animals.Count);
+            Console.WriteLine("animals Capacity : {0}", animals.Capacity);
+
+            Console.WriteLine("animals[2] : {0}", animals[2]);
+            Console.WriteLine("animals.Remove(animals[2])"); animals.Remove(animals[2]);
+            Console.WriteLine("animals[2] : {0}", animals[2]);
+
+            Console.WriteLine("animals Count : {0}", animals.Count);
+            Console.WriteLine("animals Capacity : {0}", animals.Capacity);
+
+            string? findValue = animals.Find(s => s.Contains("a"));
+            Console.WriteLine("animals.Find(s => s.Contains(a)) : {0}", findValue);
+            int findIndex = animals.FindIndex(s => s.Contains("a"));
+            Console.WriteLine("animals.FindIndex(s => s.Contains(\"a\")) : {0}", findIndex);
+
+            string? findLastValue = animals.FindLast(s => s.Contains("a"));
+            Console.WriteLine("animals.FindLast(s => s.Contains(a)) : {0}", findLastValue);
+            int findLastIndex = animals.FindLastIndex(s => s.Contains("a"));
+            Console.WriteLine("animals.FindLastIndex(s => s.Contains(\"a\")) : {0}", findLastIndex);
+
+            Console.Write("animals.Contains Tiger?? -> ");
+            if (animals.Contains("Tiger"))
+                Console.WriteLine("Contains Tiger");
+            else
+                Console.WriteLine("Not Contains Tiger");
             
+
         }
     }
 }
