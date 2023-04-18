@@ -1,0 +1,15 @@
+D:\Unity\CSharp_Algorithm\01. List\bin\Debug\net6.0\01. List.exe
+D:\Unity\CSharp_Algorithm\01. List\bin\Debug\net6.0\01. List.deps.json
+D:\Unity\CSharp_Algorithm\01. List\bin\Debug\net6.0\01. List.runtimeconfig.json
+D:\Unity\CSharp_Algorithm\01. List\bin\Debug\net6.0\01. List.dll
+D:\Unity\CSharp_Algorithm\01. List\bin\Debug\net6.0\01. List.pdb
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.csproj.AssemblyReference.cache
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.AssemblyInfoInputs.cache
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.AssemblyInfo.cs
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.csproj.CoreCompileInputs.cache
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.dll
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\refint\01. List.dll
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.pdb
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\01. List.genruntimeconfig.cache
+D:\Unity\CSharp_Algorithm\01. List\obj\Debug\net6.0\ref\01. List.dll
