@@ -4,4 +4,37 @@
 *.vsidx
 *.v2
 *.1
-
+*.dmg
+*.iso
+*.tar
+*.zip
+*.gz
+.Trashes
+.Thumbs.db
+.ehthumbs.db
+*.json
+*.props
+.vs/CSharp_Algorithm/v17/.suo
+*.targets
+*.cache
+*.editorconfig
+02. LinkedList/02. LinkedList.csproj
+02. LinkedList/obj/Debug/net6.0/02. LinkedList.AssemblyInfo.cs
+02. LinkedList/obj/Debug/net6.0/02. LinkedList.GlobalUsings.g.cs
+02. LinkedList/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+.vs/CSharp_Algorithm/v17/.suo
+*.v2
+*.v2
+.vs/CSharp_Algorithm/DesignTimeBuild/.dtbcache.v2
+*.1
+.vs/ProjectEvaluation/csharp_algorithm.projects.v6.1
+.vs/ProjectEvaluation/csharp_algorithm.metadata.v6.1
+.vs/ProjectEvaluation/csharp_algorithm.metadata.v6.1
+*.1
+*.v2
+*.exe
+*.BuildWithSkipAnalyzers
+02. LinkedList/obj/Debug/net6.0/02. LinkedList.csproj.FileListAbsolute.txt
+*.sln
+CSharp_Algorithm.sln
+.vs/ProjectEvaluation/csharp_algorithm.projects.v6.1
