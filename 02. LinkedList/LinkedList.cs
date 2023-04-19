@@ -71,7 +71,6 @@ namespace DataStructure
         {
             // 1. 새로운 노드 만들기
             LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
-
             // 2. 연결 구조 바꾸기 -> 클래스이므로 주소의 참조
             if(head != null)        // 2-1. head 노드가 있을 때
             {
@@ -84,7 +83,6 @@ namespace DataStructure
                 head = newNode;
                 tail = newNode;
             }
-
             // 3. 갯수 늘리기
             count++;
             return newNode;
@@ -94,7 +92,6 @@ namespace DataStructure
         {
             // 1. 새로운 노드 만들기
             LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
-
             // 2. 연결 구조 바꾸기 -> 클래스이므로 주소의 참조
             if(tail != null)
             {
@@ -107,13 +104,116 @@ namespace DataStructure
                 head = newNode;
                 tail = newNode;
             }
-
             // 3. 갯수 늘리기
             count++;
             return newNode;
         }
 
-        // LinkedList 기술면접 조사 - List LinkedList 차이점
+        // 지정한 노드 앞에 붙이기
+        public LinkedListNode<T> AddBefore(LinkedListNode<T> node, T value)
+        {
+            // 예외
+            if (node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
+                throw new InvalidOperationException();
+            if (node == null)       // 예외2 : node가 null인 경우
+                throw new ArgumentNullException(nameof(node));
+            // 1. 새로운 노드
+            LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
 
+            // 2. 연결 구조 바꾸기
+            newNode.next = node;
+            newNode.prev = node.prev;
+            node.prev = newNode;
+            if (node.prev != null)
+                node.prev.next = newNode;
+            else
+                head = newNode;
+
+            // 3. 갯수 증가
+            count++;
+            return newNode;
+        }
+        // 지정한 노드 뒤에 붙이기
+        public LinkedListNode<T> AddAfter(LinkedListNode<T> node, T value)
+        {
+            // 예외
+            if (node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
+                throw new InvalidOperationException();
+            if (node == null)       // 예외2 : node가 null인 경우
+                throw new ArgumentNullException(nameof(node));
+            // 1. 새로운 노드
+            LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
+
+            // 2. 연결 구조 바꾸기
+            newNode.prev = node;
+            newNode.next = node.next;
+            node.next = newNode;
+            if (node.next != null)
+                node.next.prev = newNode;
+            else
+                tail = newNode;
+
+            // 3. 갯수 증가
+            count++;
+            return newNode;
+        }
+
+        // 노드 지우기
+        public void Remove(LinkedListNode<T> node)
+        {
+            // 예외
+            if(node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
+                throw new InvalidOperationException();
+            if (node == null)       // 예외2 : node가 null인 경우
+                throw new ArgumentNullException(nameof(node));
+
+            // 0. 지웠을 때 head나 tail이 변경되는 경우 적용
+            // 0, 1 -> 양방향이기 때문에 else if 사용하지 않음
+            if (head == node)
+                head = node.next;
+            if (tail == node)
+                tail = node.prev;
+
+            // 1. 연결구조 바꾸기
+            if(node.prev!=null)
+                node.prev.next = node.next;
+            if(node.next!=null)
+                node.next.prev = node.prev;
+            
+            // 2. 갯수 줄이기
+            count--;
+        }
+
+        public bool Remove(T value)
+        {
+            LinkedListNode<T> findNode = Find(value);
+            if(findNode != null)
+            {
+                Remove(findNode);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public LinkedListNode<T> Find(T value)
+        {
+            LinkedListNode<T> target = head;
+            // 일반화에 대해서 비교할 수 없어서 EqualityComparer 사용
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+
+            while (target != null)
+            {
+                // value와 target.Value가 같다면 target 반환
+                if (comparer.Equals(value, target.Value))
+                    return target;
+                // 아니라면 다음 노드 확인
+                else
+                    target = target.next;
+            }
+            return null;
+        }
     }
 }
