@@ -1,4 +1,6 @@
-﻿namespace _02._LinkedList
+﻿using System.Runtime.InteropServices;
+
+namespace _02._LinkedList
 {
     internal class Program
     {
@@ -45,6 +47,7 @@
             linkedList.Remove(findNode);
         }
 
+
         // <List의 시간복잡도>     => LinkedList와 접근의 시간복잡도가 다른 이유는 데이터의 연속성
         // 접근		탐색		삽입		삭제
         // O(1)		O(n)	    O(n)	    O(n)
@@ -68,14 +71,30 @@
 
         public static void Main(string[] args)
         {
-            DataStructure.LinkedList<int> linkedList = new DataStructure.LinkedList<int>();
+            DataStructure.LinkedList<string> linkedList = new DataStructure.LinkedList<string>();
 
-            linkedList.AddFirst(0);
-            linkedList.AddLast(1);
-            linkedList.AddFirst(2);
-            linkedList.AddLast(3);
-            linkedList.AddFirst(4);
-            linkedList.AddLast(5);
+            linkedList.AddFirst("첫 데이터 삽입");
+            linkedList.AddLast("두번째 데이터 삽입");
+            linkedList.AddFirst("세번째 데이터 삽입");
+            linkedList.AddLast("네번째 데이터 삽입");
+            // 현재 3 1 2 4
+
+            // 첫 데이터의 노드 value1node
+            DataStructure.LinkedListNode<string>? value1node = linkedList.Find("첫 데이터 삽입");
+            linkedList.AddBefore(value1node, "첫 데이터 앞에 삽입");
+            linkedList.AddAfter(value1node, "첫 데이터 뒤에 삽입");
+
+            // node Remove
+            linkedList.Remove(value1node);
+            // RemoveLast
+            linkedList.RemoveLast();
+            // 현재 3 2
+
+            Console.WriteLine("linkedList.Contains(\"세번째 데이터 삽입\") : {0}" , linkedList.Contains("세번째 데이터 삽입")); // true
+
+
+
+
         }
     }
 }

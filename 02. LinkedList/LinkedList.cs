@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DataStructure
 {
@@ -45,7 +46,7 @@ namespace DataStructure
         // value 는 읽기/쓰기 가능
         public T Value { get { return item; } set { item = value; } }
     }
-    
+
     public class LinkedList<T>
     {
         // head : 가장 앞에 있는 노드 / tail : 가장 뒤에 있는 노드
@@ -65,6 +66,16 @@ namespace DataStructure
         public LinkedListNode<T> First { get { return head; } }
         public LinkedListNode<T> Last { get { return tail; } }
         public int Count { get { return count; } }
+
+        // Node를 받아 사용하는 함수에 공통으로 들어가는 예외사항 함수
+        public void NodeException(LinkedListNode<T> node)
+        {
+            // 예외
+            if (node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
+                throw new InvalidOperationException();
+            if (node == null)       // 예외2 : node가 null인 경우
+                throw new ArgumentNullException(nameof(node));
+        }
 
         // AddFirst 가장 앞에 붙이기
         public LinkedListNode<T> AddFirst(T value)
@@ -87,7 +98,7 @@ namespace DataStructure
             count++;
             return newNode;
         }
-
+        // AddLast 가장 뒤에 붙이기
         public LinkedListNode<T> AddLast(T value)
         {
             // 1. 새로운 노드 만들기
@@ -108,15 +119,10 @@ namespace DataStructure
             count++;
             return newNode;
         }
-
         // 지정한 노드 앞에 붙이기
         public LinkedListNode<T> AddBefore(LinkedListNode<T> node, T value)
         {
-            // 예외
-            if (node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
-                throw new InvalidOperationException();
-            if (node == null)       // 예외2 : node가 null인 경우
-                throw new ArgumentNullException(nameof(node));
+            NodeException(node);
             // 1. 새로운 노드
             LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
 
@@ -136,11 +142,7 @@ namespace DataStructure
         // 지정한 노드 뒤에 붙이기
         public LinkedListNode<T> AddAfter(LinkedListNode<T> node, T value)
         {
-            // 예외
-            if (node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
-                throw new InvalidOperationException();
-            if (node == null)       // 예외2 : node가 null인 경우
-                throw new ArgumentNullException(nameof(node));
+            NodeException(node);
             // 1. 새로운 노드
             LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
 
@@ -158,15 +160,10 @@ namespace DataStructure
             return newNode;
         }
 
-        // 노드 지우기
+        // 노드를 받아 노드를 지우기
         public void Remove(LinkedListNode<T> node)
         {
-            // 예외
-            if(node.list != this)   // 예외1 : node가 연결리스트에 포함된 노드가 아닌 경우
-                throw new InvalidOperationException();
-            if (node == null)       // 예외2 : node가 null인 경우
-                throw new ArgumentNullException(nameof(node));
-
+            NodeException(node);
             // 0. 지웠을 때 head나 tail이 변경되는 경우 적용
             // 0, 1 -> 양방향이기 때문에 else if 사용하지 않음
             if (head == node)
@@ -183,23 +180,54 @@ namespace DataStructure
             // 2. 갯수 줄이기
             count--;
         }
+        // LinkedList<T>의 시작 위치에서 노드를 제거
+        public void RemoveFirst()
+        {
+            if (head != null)
+            {
+                Remove(head);
+            }
+            else // 
+            {
+                throw new InvalidOperationException();
+            }
+        }
 
+        // LinkedList<T>의 끝에서 노드를 제거합니다.
+        public void RemoveLast()
+        {
+            if (tail != null)
+            {
+                Remove(tail);
+            }
+            else    // LinkedList<T>가 비었을 경우
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        // node가 아니라 value를 받아 노드를 지우는 함수. bool형을 반환함
         public bool Remove(T value)
         {
+            // find함수를 사용해 얻은 findNode는 value값을 가지고있는 노드
             LinkedListNode<T> findNode = Find(value);
             if(findNode != null)
             {
+                // findNode가 있다면 그 노드를 지우고 true를 반환
                 Remove(findNode);
                 return true;
             }
             else
             {
+                // findNode가 없다면 false를 반환
                 return false;
             }
         }
 
-        public LinkedListNode<T> Find(T value)
+        // value 값을 가지고 있는 노드를 찾아 반환하는 함수
+        public LinkedListNode<T>? Find(T value)
         {
+            // 찾는 범위는 head부터 시작
             LinkedListNode<T> target = head;
             // 일반화에 대해서 비교할 수 없어서 EqualityComparer 사용
             EqualityComparer<T> comparer = EqualityComparer<T>.Default;
@@ -215,5 +243,44 @@ namespace DataStructure
             }
             return null;
         }
+
+        // value 값을 가지고 있는 '마지막' 노드를 찾아 반환하는 함수
+        public LinkedListNode<T>? FindLast(T value)
+        {
+            // 찾는 범위는 tail부터 시작
+            LinkedListNode<T> target = tail;
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+
+            while (target != null)
+            {
+                // value와 target.Value가 같다면 target 반환
+                if (comparer.Equals(value, target.Value))
+                    return target;
+                // 아니라면 다음 노드 확인
+                else
+                    target = target.prev;
+            }
+            return null;
+        }
+
+        // 값이 LinkedList에 있는지 여부를 확인하는 함수
+        // LinkedList의 탐색은 순차탐색 -> O(n)
+        public bool Contains(T value)
+        {
+            LinkedListNode<T> target = head;
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+
+            while (target != null)
+            {
+                // value와 target.Value가 같으면 true(포함한다)
+                if (comparer.Equals(value, target.Value))
+                    return true;
+                else
+                    target = target.next;
+            }
+            return false;
+        }
+
+        
     }
 }
