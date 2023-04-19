@@ -10,12 +10,14 @@ namespace _01._List
     // 인덱서[], Add, Remove, Find, FindIndex, Count
     internal class ListEx<T>
     {
+        const int DefaultCapacity = 10;
+
         private T[] items;
         private int size;
 
         public ListEx()
         {
-            items = new T[10];
+            items = new T[DefaultCapacity];
             size = 0;
         }
 
@@ -39,6 +41,7 @@ namespace _01._List
                 T[] newItems = new T[newCapacity];
                 Array.Copy(items, 0, newItems, 0, size);
                 items = newItems;
+                items[size++] = item;
             }
         }
 
@@ -126,6 +129,14 @@ namespace _01._List
             }
             return false;  // 없으면 false 반환
         }
+
+        // 지우기
+        public void Clear()
+        {
+            items = new T[DefaultCapacity];
+            size = 0;
+        }
+
 
 
     }
