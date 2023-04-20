@@ -295,7 +295,7 @@ namespace _03._Iterator
         public struct Enumerator : IEnumerator<T>
         {
             private LinkedList<T> linkedList;
-            private LinkedListNode<T> node; // LinkedList의 index. LinkedList에서는 index를 쓰지 않아도 됨
+            private LinkedListNode<T> node; // LinkedList의 index
 
             private T current;
 
@@ -310,7 +310,7 @@ namespace _03._Iterator
 
             object IEnumerator.Current { get { return current; } }
 
-            public void Dispose() { }   // 모든 리소스를 해제
+            public void Dispose() { }
 
             public bool MoveNext()
             {
@@ -320,7 +320,7 @@ namespace _03._Iterator
                     node = node.next;
                     return true;
                 }
-                else    // node의 다음이 null일 경우
+                else    // node의 다음 갈 곳이 없을 경우
                 {
                     current = default(T);
                     return false;

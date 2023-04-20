@@ -157,18 +157,16 @@ namespace _03._Iterator
             public Enumerator(List<T> list)
             {
                 this.list = list;
-                this.index = -1; // 0부터 시작하면 첫번째 데이터를 건너 뛰어서 index++ 후위연산자로 바꿔줘야함
-                this.current = default(T); // default : 아무런 값이 아니다. current : 비어있는 상황에 대한 체크용
+                this.index = -1;
+                this.current = default(T); // 아무런 값이 아니다. 비어있는 상황에 대한 체크용
             }
 
             public T Current { get { return current; } }
 
             object IEnumerator.Current { get { return current; } }
 
-            // List<T>.Enumerator에서 사용하는 모든 리소스를 해제
             public void Dispose() { }
 
-            // 다음 칸으로 갈 수 있는지 확인하며 이동
             public bool MoveNext()
             {
                 if(index < list.Count - 1)
@@ -182,7 +180,7 @@ namespace _03._Iterator
                     return false;
                 }
             }
-            // index와 current값을 초기화해줌
+
             public void Reset()
             {
                 index = -1;
