@@ -36,7 +36,7 @@
             // foreach 반복문은 데이터집합의 반복기를 통해서 단계별로 반복
             // 즉, 반복기가 있다면 foreach 반복문으로 순회 가능
             foreach (int i in list) { }
-            // foreach (int i in linkedList) { }
+            foreach (int i in linkedList) { }
             foreach (int i in stack) { }
             foreach (int i in queue) { }
             foreach (int i in set) { }
@@ -71,6 +71,50 @@
             Find(stack);
         }
 
+        // IList 자료구조를 받는 Sort함수
+        public delegate int Compare<T>(T left, T right);
+        public static void Sort<T>(IList<T> array, Compare<T> compare)
+        {
+            // Bubble Sort
+            for (int i = 0; i < array.Count; i++)
+            {
+                for (int j = i; j < array.Count; j++)
+                {
+                    if (compare(array[i], array[j]) > 0)
+                    {
+                        T temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+                Console.Write(array[i] + ", ");
+            }
+            Console.WriteLine();
+        }
+
+        // 오름차순 정렬
+        public static int AscendingOrder(int left, int right)
+        {
+            if (left > right)
+                return 1;
+            else if (left < right)
+                return -1;
+            else
+                return 0;
+        }
+
+        // 내림차순 정렬
+        public static int DescendingOrder(int left, int right)
+        {
+            if (left < right)
+                return 1;
+            else if (left > right)
+                return -1;
+            else
+                return 0;
+        }
+
+
         public void Find(IEnumerable<int> container)
         {
             IEnumerator<int> iter = container.GetEnumerator();
@@ -92,15 +136,30 @@
 
         static void Main(string[] args)
         {
-            LinkedList<int> linkedList = new LinkedList<int>();
-            for(int i = 1; i <= 5; i++) linkedList.AddLast(i);
+            // 실습 1. foreach에 List, LinkedList 반복 확인
+            List<int> list = new List<int>();
+            for (int i = 1; i <= 5; i++) list.Add(i);
 
-            // 반복가능한 자료구조에 반복기를 붙임
-            IEnumerator<int> iterLinked = linkedList.GetEnumerator();
-            while (iterLinked.MoveNext())
-            {
-                Console.WriteLine(iterLinked.Current);
-            }
+            LinkedList<int> linkedList = new LinkedList<int>();
+            for (int i = 1; i <= 5; i++) linkedList.AddLast(i);
+
+            Console.Write("List foreach : ");
+            foreach (int i in list)
+                Console.Write($"{i} ");
+
+            Console.WriteLine();
+
+            Console.Write("LinkedList foreach : ");
+            foreach (int i in linkedList)
+                Console.Write($"{i} ");
+
+            Console.WriteLine();
+
+            // 실습 0. Sort(배열), Sort(리스트) 오버로딩x 둘 모두 정렬 가능한 하나의 함수 Sort 구현 
+            int[] array = { 3, -2, 1, -4, 9, -8, 7, -6, 5 };
+            Console.WriteLine("int[] array : { 3, -2, 1, -4, 9, -8, 7, -6, 5");
+            Console.WriteLine("오름차순 : "); Sort(array, AscendingOrder);
+            Console.WriteLine("내림차순 : "); Sort(array, DescendingOrder);
         }
     }
 }
