@@ -92,15 +92,22 @@
 
         static void Main(string[] args)
         {
+            // 실습 1. foreach에 List, LinkedList 반복 확인
+            List<int> list = new List<int>();
+            for (int i = 1; i <= 5; i++) list.Add(i);
+
             LinkedList<int> linkedList = new LinkedList<int>();
             for(int i = 1; i <= 5; i++) linkedList.AddLast(i);
 
-            // 반복가능한 자료구조에 반복기를 붙임
-            IEnumerator<int> iterLinked = linkedList.GetEnumerator();
-            while (iterLinked.MoveNext())
-            {
-                Console.WriteLine(iterLinked.Current);
-            }
+            Console.Write("List foreach : ");
+            foreach (int i in list)
+                Console.Write($"{i} ");
+
+            Console.WriteLine();
+
+            Console.Write("LinkedList foreach : ");
+            foreach (int i in linkedList)
+                Console.Write($"{i} ");
         }
     }
 }
