@@ -67,7 +67,7 @@ namespace _02._LinkedList
 
         // 단방향 LinkedList : 이전의 주소가 필요없음 -> 참조용 데이터가 하나 적음
         // 양방향 LinkedList : 이전, 다음의 참조용 데이터가 필요
-        // 환 형 LinkedList : 양방향과 비슷하지만 마지막 노드는 처음의 노드를 가리킴 -> c#
+        // 원형/환형 LinkedList : 양방향과 비슷하지만 마지막 노드는 처음의 노드를 가리킴 -> c#
 
         public static void Main(string[] args)
         {

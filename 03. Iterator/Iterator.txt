@@ -1,0 +1,22 @@
+﻿반복기 (Enumerator(Iterator)) => 열거자
+
+자료구조에 저장되어 있는 요소들을 순회하는 인터페이스
+복합객체의 내부 구조에 상관 없이 동일한 방식의 요소를 열거하는 디자인 패턴
+리스트나 배열과 같은 컬렉션을 단계별로 실행, 반복 조사할 때 유용한 개념
+
+foreach문이 컬렉션 속 개별 객체들을 하나 꺼내와 처리하고 다른 객체를 꺼내와 처리하는 것이 반복될 수 있는 까닭은,
+컬렉션을 반복하는 데 필요한 코드를 생성하기 위해 .NET Core 라이브러리에 정의된 IEnumerable/ IEnumerator Interface를 
+상속하였기 때문. 이 인터페이스에는 공통의 메소드가 있는데 이 메소드가 GetEnumerator()임
+
+메소드가 반환하는 열거자는 객체
+객체가 요소를 가리키며 다음 요소로 이동하거나 값을 꺼내올 수 있게 됨
+모든 열거자는 IEnumerator<T> 인터페이스를 구현하기 때문에 사용법이 동일
+IEnumerable<T> 는 컬렉션의 인터페이스이고 IEnumerator<T>는 열거자의 인터페이스
+따라서 반환값을 받을 때에는 IEnumerator<T>로 받으면 됨
+IEnumerable 의 메소드 IEnumerator 은 current 속성과 moveNext, Rest method를 가지고 있어 현재 인덱스의 값을 반환하고
+인덱스를 다음으로 옮기거나 반환함
+
+IEnumerable은 객체의 형식을 규정/ Enumerator을 구현하도록 하고 IEnumerator은 객체의 인덱스에 해당하는 요소를 반환하고,
+인덱스를 넘기는 메서드를 구현하도록 함.
+그래서 IEnumerable/ IEnumerator Interface를 상속받지 않은 형식은 foreach 문을 사용할 수 없고,
+상속받은 형식은 foreach문을 사용해 Iterator을 만들 수 있게 됨.
