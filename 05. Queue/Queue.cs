@@ -28,13 +28,14 @@ namespace DataStructure
             tail = 0;
         }
 
+        // 큐의 요소의 개수를 구하는 Count
         public int Count
         {
             get
             {
-                if (head <= tail)
+                if (head <= tail) // head가 앞에 있을 경우는 tail - head를 하면 Count가 나옴
                     return tail - head;
-                else
+                else // tail이 head보다 앞에 있을 경우 tail-head를 하면 음수가 나옴. 그 수에 array.Length를 더해주면 Count가 나옴
                     return tail - head + array.Length;
             }
         }
@@ -112,7 +113,15 @@ namespace DataStructure
                 head = 0;       // head는 맨 앞에 위치
                 tail = Count;   // tail은 데이터들 뒤에 위치
             }
-            array = newArray;
+            array = newArray;   // 길이를 늘려 새로 만든 배열을 원래의 배열에 복사
+        }
+
+        // 큐를 초기화하는 함수
+        public void Clear()
+        {
+            array = new T[DefaultCapacity + 1];
+            head = 0;
+            tail = 0;
         }
     }
 }

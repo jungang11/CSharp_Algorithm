@@ -29,7 +29,7 @@
 
         static void Main(string[] args)
         {
-            Test(); // 역순으로 출력(후출)
+            Bracket.BracketCal();
         }
     }
 }
