@@ -72,48 +72,30 @@
         }
 
         // IList 자료구조를 받는 Sort함수
-        public delegate int Compare<T>(T left, T right);
-        public static void Sort<T>(IList<T> array, Compare<T> compare)
+        public static void Sort<T>(IList<T> list)
         {
-            // Bubble Sort
-            for (int i = 0; i < array.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                for (int j = i; j < array.Count; j++)
+                for (int j = i; j < list.Count; j++)
                 {
-                    if (compare(array[i], array[j]) > 0)
-                    {
-                        T temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                    }
+                    if (list[i] > list[j])
+                    T temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
                 }
-                Console.Write(array[i] + ", ");
             }
-            Console.WriteLine();
         }
-
-        // 오름차순 정렬
-        public static int AscendingOrder(int left, int right)
+        
+        // 자료구조 평균내기
+        public static double Average(ICollection<int> collection)
         {
-            if (left > right)
-                return 1;
-            else if (left < right)
-                return -1;
-            else
-                return 0;
+            double sum = 0;
+            foreach(int i in collection)
+            {
+                sum += i;
+            }
+            return sum/(collection.Count);
         }
-
-        // 내림차순 정렬
-        public static int DescendingOrder(int left, int right)
-        {
-            if (left < right)
-                return 1;
-            else if (left > right)
-                return -1;
-            else
-                return 0;
-        }
-
 
         public void Find(IEnumerable<int> container)
         {
@@ -155,11 +137,18 @@
 
             Console.WriteLine();
 
-            // 실습 0. Sort(배열), Sort(리스트) 오버로딩x 둘 모두 정렬 가능한 하나의 함수 Sort 구현 
-            int[] array = { 3, -2, 1, -4, 9, -8, 7, -6, 5 };
-            Console.WriteLine("int[] array : { 3, -2, 1, -4, 9, -8, 7, -6, 5");
-            Console.WriteLine("오름차순 : "); Sort(array, AscendingOrder);
-            Console.WriteLine("내림차순 : "); Sort(array, DescendingOrder);
+            // 0
+            int[] array = { 1, -2, 3, -4, 5, -6, 7, -8 };
+            list.Clear();
+            list.Add(15);
+            list.Add(14);
+            list.Add(13);
+            list.Add(12);
+            list.Add(16);
+
+            Sort(array);
+            Sort<int>(list);
+            Console.WriteLine(Average(array));
         }
     }
 }

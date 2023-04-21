@@ -187,7 +187,7 @@ namespace _03._Iterator
                 current = default(T);
             }
 
-
+            
         }
     }
 }
