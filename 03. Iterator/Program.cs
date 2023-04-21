@@ -72,20 +72,22 @@
         }
 
         // IList 자료구조를 받는 Sort함수
-        public static void Sort<T>(IList<T> list)
+        public static void Sort<T>(IList<T> list, Comparison<T> compare)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (int i = list.Count; i > 0 ; i--)
             {
-                for (int j = i; j < list.Count; j++)
+                for (int j = 0; j < i; j++)
                 {
-                    if (list[i] > list[j])
-                    T temp = list[i];
-                    list[i] = list[j];
-                    list[j] = temp;
+                    if (compare(list[j], list[j+1])> 0)
+                    {
+                        T temp = list[j];
+                        list[j] = list[j+1];
+                        list[j+1] = temp;
+                    }
                 }
             }
         }
-        
+
         // 자료구조 평균내기
         public static double Average(ICollection<int> collection)
         {
@@ -146,8 +148,7 @@
             list.Add(12);
             list.Add(16);
 
-            Sort(array);
-            Sort<int>(list);
+            Sort(array, Ascending);
             Console.WriteLine(Average(array));
         }
     }
