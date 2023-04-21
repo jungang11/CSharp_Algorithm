@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01._List
+namespace DataStructure
 {
     // 1. 선형리스트 구현
     // 인덱서[], Add, Remove, Find, FindIndex, Count

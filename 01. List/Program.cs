@@ -86,7 +86,7 @@ namespace _01._List
 
         static void Main(string[] args)
         {
-            ListEx<string> animals = new ListEx<string>();
+            DataStructure.ListEx<string> animals = new DataStructure.ListEx<string>();
 
             animals.Add("Tiger");
             animals.Add("Elephant");
