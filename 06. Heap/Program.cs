@@ -56,7 +56,7 @@
 
         static void Main(string[] args)
         {
-            PriorityQueue();
+            Midnum.midNum();
         }
     }
 }
