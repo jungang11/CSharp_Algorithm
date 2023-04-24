@@ -29,7 +29,8 @@
 
         static void Main(string[] args)
         {
-            Bracket.BracketCal();
+            string pos = "2*4+5+6/3";
+            StackCalCulator.GetPostfix(pos);
         }
     }
 }
