@@ -57,7 +57,9 @@ namespace _06._Heap
                         MaxHeap.Enqueue(num, num);
                     }
                 }
-                Console.WriteLine("현재 중간값 : {0}",MaxHeap.Peek());
+                // 숫자의 개수가 홀수일때 중간값 출력
+                if((MaxHeap.Count+MinHeap.Count) % 2 == 1)
+                    Console.WriteLine("현재 중간값 : {0}",MaxHeap.Peek());
             }
         }
     }
