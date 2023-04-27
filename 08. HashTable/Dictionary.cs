@@ -18,7 +18,6 @@ namespace DataStructure
             public enum State { None, Using, Deleted }
 
             public State state;
-            public int hashCode;
             public TKey key;
             public TValue value;
         }
@@ -53,54 +52,6 @@ namespace DataStructure
                 // OverrideExist : 덮어쓰기를 통해 key값의 value값을 새로 덮어쓴다
                 TryInsert(key, value, InsertionBehavior.OverrideExist);
             }
-
-            /*// 탐색해서 값을 반환하는 방법 => 모듈화가 되어서 간소화
-            get
-            {
-                // 1. key를 index로 해싱
-                int index = Math.Abs(key.GetHashCode() % table.Length);
-
-                // 2. key가 일치하는 데이터가 나올때까지 다음으로 이동
-                while (table[index].state == Entry.State.Using)
-                {
-                    // 3. 겹친 위치의 키가 그 자리의 키와 같을 경우 => 반환
-                    if (key.Equals(table[index].key))
-                    {
-                        return table[index].value;
-                    }
-                    // 사용중이 아닌걸 만났을 때 -> 잘못 만난것
-                    if (table[index].state == Entry.State.None)
-                    {
-                        break;
-                    }
-                    index = ++index % table.Length;
-                }
-                throw new KeyNotFoundException();
-            }
-            // 탐색해서 그 위치를 바꾸는 방법
-            set
-            {
-                // 1. key를 index로 해싱
-                int index = Math.Abs(key.GetHashCode() % table.Length);
-
-                // 2. key가 일치하는 데이터가 나올때까지 다음으로 이동
-                while (table[index].state == Entry.State.Using)
-                {
-                    // 3. 겹친 위치의 키가 그 자리의 키와 같을 경우 => value 값 변경
-                    if (key.Equals(table[index].key))
-                    {
-                        table[index].value = value;
-                        return;
-                    }
-                    // 사용중이 아닌걸 만났을 때 -> 잘못 만난것
-                    if (table[index].state == Entry.State.None)
-                    {
-                        break;
-                    }
-                    index = ++index % table.Length;
-                }
-                throw new KeyNotFoundException();
-            }*/
         }
 
         // 삽입할 때 상태 나누기 위한 열거형
