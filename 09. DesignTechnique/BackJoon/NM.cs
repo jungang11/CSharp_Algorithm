@@ -33,7 +33,7 @@ namespace _09._DesignTechnique.BackJoon
             }
         }
 
-        // M개까지 N줄 출력
+        /*// M개까지 N줄 출력
         public static void Main(string[] args)
         {
             // 한 줄에 두개 입력받기 위해 s 문자열을 공백기준으로 나눔
@@ -45,6 +45,6 @@ namespace _09._DesignTechnique.BackJoon
 
             Back(arr, 0, N, M);
             Console.WriteLine(sb);
-        }
+        }*/
     }
 }

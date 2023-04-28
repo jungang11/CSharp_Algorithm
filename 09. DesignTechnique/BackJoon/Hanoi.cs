@@ -25,13 +25,13 @@ namespace _09._DesignTechnique.BackJoon
             }
         }
         
-        public static void Main(string[] args)
+        /*public static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
             
             Console.WriteLine(Math.Pow(2, n) - 1);
             Move(n, 1, 3);
             Console.WriteLine(sb);
-        }
+        }*/
     }
 }

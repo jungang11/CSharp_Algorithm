@@ -1,0 +1,15 @@
+D:\Unity\CSharp_Algorithm\10. Sort\bin\Debug\net6.0\10. Sort.exe
+D:\Unity\CSharp_Algorithm\10. Sort\bin\Debug\net6.0\10. Sort.deps.json
+D:\Unity\CSharp_Algorithm\10. Sort\bin\Debug\net6.0\10. Sort.runtimeconfig.json
+D:\Unity\CSharp_Algorithm\10. Sort\bin\Debug\net6.0\10. Sort.dll
+D:\Unity\CSharp_Algorithm\10. Sort\bin\Debug\net6.0\10. Sort.pdb
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.csproj.AssemblyReference.cache
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.AssemblyInfoInputs.cache
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.AssemblyInfo.cs
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.csproj.CoreCompileInputs.cache
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.dll
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\refint\10. Sort.dll
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.pdb
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\10. Sort.genruntimeconfig.cache
+D:\Unity\CSharp_Algorithm\10. Sort\obj\Debug\net6.0\ref\10. Sort.dll
