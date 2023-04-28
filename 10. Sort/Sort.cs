@@ -20,12 +20,16 @@ namespace _10._Sort
         // 데이터 중 가장 작은 값부터 하나씩 선택하여 정렬
         public static void SelectionSort(IList<int> list)
         {
+            // 하나의 원소만 남을 때까지 과정을 반복한다.
             for (int i = 0; i < list.Count; i++)
             {
                 int minIndex = i;
+                // 맨 처음 위치를 뺀 나머지 리스트를 같은 방법으로 교체한다.
                 for (int j = i + 1; j < list.Count; j++)
                 {
+                    // 주어진 배열 중 최솟값을 찾는다.
                     if (list[j] < list[minIndex])
+                        // 그 값을 맨 앞에 위치한 값과 교체한다.
                         minIndex = j;
                 }
                 Swap(list, i, minIndex);
@@ -38,15 +42,17 @@ namespace _10._Sort
         // 데이터를 하나씩 꺼내어 정렬된 자료 중 적합한 위치에 삽입하여 정렬
         public static void InsertionSort(IList<int> list)
         {
+            // 인덱스 0은 이미 정렬된 것으로 본다.
             for (int i = 1; i < list.Count; i++)
             {
+                // 현재 삽입될 숫자인 list[i]를 key 변수로 복사한다.
                 int key = list[i];
                 int j;
                 // 현재 정렬된 배열은 i-1까지이므로 i-1번째부터 역순으로 조사한다.
                 // j 값은 음수가 아니어야 되고
-                // key 값보다 정렬된 배열에 있는 값이 크면 j번째를 j+1번째로 이동
                 for (j = i - 1; j >= 0 && key < list[j]; j--)
                 {
+                    // key 값보다 정렬된 배열에 있는 값이 크면 j번째를 j+1번째로 이동
                     list[j + 1] = list[j];
                 }
                 list[j + 1] = key;
@@ -82,13 +88,15 @@ namespace _10._Sort
         // 힙을 이용하여 우선순위가 가장 높은 요소부터 가져와 정렬
         public static void HeapSort(IList<int> list)
         {
+            // 우선순위 큐 사용
             PriorityQueue<int, int> pq = new PriorityQueue<int, int>();
 
+            // 우선순위 큐에 list를 Enqueue해 힙 트리를 만든다.
             for (int i = 0; i < list.Count; i++)
             {
                 pq.Enqueue(list[i], list[i]);
             }
-
+            // 만든 힙 트리를 하나씩 Dequeue하며 list에 넣는다.
             for (int i = 0; i < list.Count; i++)
             {
                 list[i] = pq.Dequeue();
