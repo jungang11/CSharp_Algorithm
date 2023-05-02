@@ -34,8 +34,10 @@ namespace _11._Searching
             int low = 0;
             int high = list.Count - 1;
 
+            // 엇갈릴 때 까지
             while(low <= high)
             {
+                // 엇갈릴 때 까지를 알기위해 중간 위치
                 int middle = (low + high) / 2;
                 int compare = list[middle].CompareTo(item);
 
@@ -52,31 +54,34 @@ namespace _11._Searching
         // <깊이 우선 탐색 (Depth first search)>
         // 그래프의 분기를 만났을 때 최대한 깊이 내려간 뒤,
         // 더이상 깊이 갈 곳이 없을 경우 다음 분기를 탐색 (백트래킹)
-        public static void DFS(bool[,] graph, int start, out bool[] visited, out int[] path) // 갈 수 있는지, 경로
+        public static void DFS(in bool[,] graph, int start, out bool[] visited, out int[] parents) // 갈 수 있는지, 경로
         {
             visited = new bool[graph.GetLength(0)];
-            path = new int[graph.GetLength(0)];
+            parents = new int[graph.GetLength(0)];
 
             // 값들을 초기화
             for (int i = 0; i < graph.GetLength(0); i++)
             {
                 // 한번도 방문하지 않은
                 visited[i] = false;
-                path[i] = -1;
+                parents[i] = -1;
             }
-            SearchNode(graph, start, visited, path);
+            // SearchNode가 중요
+            SearchNode(graph, start, visited, parents);
         }
 
-        private static void SearchNode(bool[,] graph, int start, bool[] visited, int[] path)
+        private static void SearchNode(bool[,] graph, int start, bool[] visited, int[] parents)
         {
+            // 탐색 여부 표시를 해줘야함
             visited[start] = true;
+            // 내가 탐색할 수 있는 모든 정점들을 탐색
             for(int i = 0; i < graph.GetLength(0); i++)
             {
-                if (graph[start, i] && // start부터 i까지 갈 수 있는지 확인
-                       !visited[i])
+                if (graph[start, i] && // start부터 i까지 갈 수 있는지 확인. 연결되있어야지만 탐색
+                       !visited[i])    // + 방문한 적이 없어야함
                 {
-                    path[i] = start;
-                    SearchNode(graph, i, visited, path);
+                    parents[i] = start;
+                    SearchNode(graph, i, visited, parents);
                 }
             }
         }
@@ -95,6 +100,7 @@ namespace _11._Searching
                 parents[i] = -1;
             }
 
+            // 탐색할 정점을 담을 큐
             Queue<int> bfsQueue = new Queue<int>();
 
             bfsQueue.Enqueue(start);
@@ -109,7 +115,7 @@ namespace _11._Searching
                         !visited[i])            // 방문한적 없는 정점
                     {
                         parents[i] = next;
-                        bfsQueue.Enqueue(i);
+                        bfsQueue.Enqueue(i);    // 탐색해야할 정점을 큐에 담아줌
                     }
                 }
             }
