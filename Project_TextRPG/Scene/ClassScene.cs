@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class MainMenuScene : Scene
+    public enum ClassType { Knight = 0, Archor = 1 }
+
+    public class ClassScene : Scene
     {
-        public MainMenuScene(Game game) : base(game)
+        ClassType type = ClassType.Knight;
+
+        public ClassScene(Game game) : base(game)
         {
         }
 
@@ -16,9 +20,9 @@ namespace Project_TextRPG
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("1. 게임시작");
-            sb.AppendLine("2. 게임종료");
-            sb.Append("메뉴를 선택하세요 : ");
+            sb.AppendLine("1. 기사");
+            sb.AppendLine("2. 아처");
+            sb.Append("직업을 선택하세요 : ");
 
             Console.Write(sb.ToString());
         }
@@ -38,10 +42,12 @@ namespace Project_TextRPG
             switch (index)
             {
                 case 1:
-                    game.ClassMenu();
+                    type = ClassType.Knight;
+                    game.GameStart();
                     break;
                 case 2:
-                    game.GameOver("게임을 종료했습니다.");
+                    type = ClassType.Archor;
+                    game.GameStart();
                     break;
                 default:
                     Console.WriteLine("잘못 입력 하셨습니다.");

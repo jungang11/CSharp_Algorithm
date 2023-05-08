@@ -6,21 +6,96 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    internal class BattleScene : Scene
+    public class BattleScene : Scene
     {
+        private Monster monster;
+
         public BattleScene(Game game) : base(game)
         {
-
         }
 
         public override void Render()
         {
-            // 배틀씬 표현
+            Console.WriteLine();
+            Console.WriteLine($"{monster.name}    {monster.curHp,3}/{monster.maxHp,3}");
+            Console.WriteLine();
+            Console.WriteLine(monster.image);
+            Console.WriteLine();
+            Console.WriteLine(Data.player.image);
+            Console.WriteLine();
+            Console.WriteLine($"플레이어    {Data.player.CurHp,3}/{Data.player.MaxHp}");
+            Console.WriteLine();
         }
 
         public override void Update()
         {
-            // 배틀씬 갱신
+            for (int i = 0; i < Data.player.skills.Count; i++)
+            {
+                Console.Write($"{i + 1,2}. {Data.player.skills[i].name} ");
+            }
+            Console.WriteLine();
+            Console.Write("명령을 입력하세요 : ");
+
+            string input = Console.ReadLine();
+
+            int index;
+            if (!int.TryParse(input, out index))
+            {
+                Console.WriteLine("잘못 입력하셨습니다.");
+                return;
+            }
+            if (index < 1 || index > Data.player.skills.Count)
+            {
+                Console.WriteLine("잘못 입력하셨습니다.");
+                return;
+            }
+
+            Data.player.skills[index - 1].action(monster);
+
+            if(int.Parse(input) == 4)
+            {
+                game.EscapeBattle(monster);
+                return;
+            }
+
+            // 턴 결과
+            if (monster.curHp <= 0)
+            {
+                game.Map();
+                return;
+            }
+
+            // 몬스터 턴
+            monster.Attack(Data.player);
+
+            // 턴 결과
+            if (Data.player.CurHp <= 0)
+            {
+                game.GameOver($"{monster.name}에게 패배했습니다.");
+                return;
+            }
+        }
+
+        public void StartBattle(Monster monster)
+        {
+            this.monster = monster;
+            Data.monsters.Remove(monster);
+
+            Console.Clear();
+            Console.WriteLine($"{monster.name}(와/과) 전투 시작!");
+            Thread.Sleep(1000);
+        }
+
+        public void EscapeBattle(Monster monster)
+        {
+            this.monster = monster;
+            Data.monsters.Add(monster);
+
+            Console.Clear();
+            Console.WriteLine($"{monster.name}(와/과)의 전투에서 도망쳤다!");
+
+            Thread.Sleep(2000);
+            game.Map();
         }
     }
 }

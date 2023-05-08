@@ -121,7 +121,7 @@ namespace Project_TextRPG
             return CostStraight * (int)Math.Sqrt(xSize * xSize + ySize * ySize);
         }
 
-        public class ASNode
+        private class ASNode
         {
             public Position point;    // 현재 정점
             public Position? parent;  // 이 정점을 탐색한 정점
