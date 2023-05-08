@@ -1,0 +1,15 @@
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.csproj.AssemblyReference.cache
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.AssemblyInfoInputs.cache
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.AssemblyInfo.cs
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.csproj.CoreCompileInputs.cache
+D:\Github\CSharp_Algorithm\Project_TextRPG\bin\Debug\net6.0\Project_TextRPG.exe
+D:\Github\CSharp_Algorithm\Project_TextRPG\bin\Debug\net6.0\Project_TextRPG.deps.json
+D:\Github\CSharp_Algorithm\Project_TextRPG\bin\Debug\net6.0\Project_TextRPG.runtimeconfig.json
+D:\Github\CSharp_Algorithm\Project_TextRPG\bin\Debug\net6.0\Project_TextRPG.dll
+D:\Github\CSharp_Algorithm\Project_TextRPG\bin\Debug\net6.0\Project_TextRPG.pdb
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.dll
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\refint\Project_TextRPG.dll
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.pdb
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\Project_TextRPG.genruntimeconfig.cache
+D:\Github\CSharp_Algorithm\Project_TextRPG\obj\Debug\net6.0\ref\Project_TextRPG.dll
