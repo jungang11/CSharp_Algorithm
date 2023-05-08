@@ -204,3 +204,33 @@ CSharp_Algorithm.sln
 .vs/ProjectEvaluation/csharp_algorithm.metadata.v6.1
 .vs/CSharp_Algorithm/v17/.suo
 .vs/CSharp_Algorithm/DesignTimeBuild/.dtbcache.v2
+*.v6.1
+*.suo
+*.v2
+.vs/CSharp_Algorithm/v17/.suo
+CSharp_Algorithm.sln
+12. ShortestPath/obj/Debug/net6.0/12. ShortestPath.GlobalUsings.g.cs
+12. ShortestPath/obj/Debug/net6.0/12. ShortestPath.csproj.FileListAbsolute.txt
+12. ShortestPath/obj/Debug/net6.0/12. ShortestPath.AssemblyInfo.cs
+12. ShortestPath/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+12. ShortestPath/12. ShortestPath.csproj
+11. Searching/obj/Debug/net6.0/11. Searching.GlobalUsings.g.cs
+11. Searching/obj/Debug/net6.0/11. Searching.csproj.FileListAbsolute.txt
+11. Searching/obj/Debug/net6.0/11. Searching.AssemblyInfo.cs
+11. Searching/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+11. Searching/11. Searching.csproj
+.vs/ProjectEvaluation/csharp_algorithm.projects.v6.1
+.vs/ProjectEvaluation/csharp_algorithm.metadata.v6.1
+.vs/CSharp_Algorithm/v17/.suo
+.vs/CSharp_Algorithm/DesignTimeBuild/.dtbcache.v2
+CSharp_Algorithm.sln
+13. PathFinding/obj/Debug/net6.0/13. PathFinding.GlobalUsings.g.cs
+13. PathFinding/obj/Debug/net6.0/13. PathFinding.csproj.FileListAbsolute.txt
+13. PathFinding/obj/Debug/net6.0/13. PathFinding.AssemblyInfo.cs
+13. PathFinding/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+13. PathFinding/13. PathFinding.csproj
+12. ShortestPath/Dijkstra.cs
+.vs/ProjectEvaluation/csharp_algorithm.projects.v6.1
+.vs/ProjectEvaluation/csharp_algorithm.metadata.v6.1
+.vs/CSharp_Algorithm/v17/.suo
+.vs/CSharp_Algorithm/DesignTimeBuild/.dtbcache.v2
