@@ -103,7 +103,10 @@ namespace Project_TextRPG
 
         public void GenerateMap()
         {
-            Data.LoadLevel2();
+            Random rand = new Random();
+            int index = rand.Next(0,2);
+            if(index == 0) Data.LoadLevel1();
+            else Data.LoadLevel2();
         }
 
         private void PrintMap()

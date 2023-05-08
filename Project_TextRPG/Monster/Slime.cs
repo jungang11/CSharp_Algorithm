@@ -63,8 +63,8 @@ namespace Project_TextRPG
                 Console.WriteLine("몬스터는 포션을 떨어뜨렸다!");
                 Data.player.GetItem(new Potion());
                 Thread.Sleep(1000);
-                Console.WriteLine("플레이어는 30 경험치를 획득했다.");
-                Data.player.GetExp(30);
+                Console.WriteLine("플레이어는 50 경험치를 획득했다.");
+                Data.player.GetExp(50);
                 Thread.Sleep(2000);
             }
         }
